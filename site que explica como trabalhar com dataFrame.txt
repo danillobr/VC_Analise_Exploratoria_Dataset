@@ -1,0 +1,1 @@
+https://www.codingame.com/playgrounds/52723/programacao-python-parte-3---prof--marco-vaz/pacote-pandas-dataframe#:~:text=Pandas%20DataFrame%20%C3%A9%20uma%20estrutura,de%20trabalho%20do%20MS%2DEXCEL.
