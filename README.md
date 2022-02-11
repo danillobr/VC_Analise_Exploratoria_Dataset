@@ -1,4 +1,4 @@
-![Visualização Ccomputacional_Projeto Analise Exploratória de um Dataset](imagens/Python-logo.png)
+![Visualização Computacional_Projeto Analise Exploratória de um Dataset](imagens/Python-logo.png)
 > O presente projeto tem como intuito fazer uma análise exploratória de um dataset que é referente aos registros dos casos de dengue contabilizados nas unidades de saúde, públicas ou particulares, da cidade de Recipe - PE. Os registros foram disponibilizados publicamente pela  Prefeitura  de  Recife e datados de 2013 até novembro de 2021. O dataset se encontra no endereço eletrônico: http://dados.recife.pe.gov.br/it/dataset/casos-de-dengue-zika-e-chikungunya. A análise será feita com o auxílio da linguagem de programação Python com a IDE Spyder (Python 3.9) e a biblioteca pandas.
 
 ## Tecnologias usadas
