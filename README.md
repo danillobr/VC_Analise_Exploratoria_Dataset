@@ -7,10 +7,10 @@
   * [Biblioteca pandas](https://www.spyder-ide.org/)
 
 ## Instruções para testar o funcionamento do projeto
- * Abra o projeto no Visual Studio Code (ou em outro editor de código de sua preferência)
- * Instale a biblioteca PIL com o comando: pip install Pillow
- * Instale a biblioteca numpy com o comando: pip install numpy
- * Execute o projeto com o comando: python "projeto.py"
+ * Abra o projeto no Spyder (Python 3.9) ou em outro editor de código de sua preferência
+ * Instale a biblioteca pandas com o comando: pip install pandas
+ * Execute o projeto com o comando: python "nome do arquivo.py"
+ * De preferência veja o vídeo de apresentação do projeto facilitar na execução do projeto
 
 ## Acesso ao dataset
  * [Casos de dengue contabilizados nas unidades de saúde, públicas ou particulares, da cidade de Recipe - PE](http://dados.recife.pe.gov.br/it/dataset/casos-de-dengue-zika-e-chikungunya)
