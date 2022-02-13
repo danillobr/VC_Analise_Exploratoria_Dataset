@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 #Acessando o diretório dos arquivos CSV e carregando eles nas variáveis
-os.chdir(r'C:\Users\Dan\Desktop\Nova pasta\VC_Analise_Exploratoria_Dataset\dataset')
+os.chdir(r'C:\Users\Dan\Desktop\Projeto\VC_Analise_Exploratoria_Dataset\dataset')
 dados2013 = pd.read_csv('2013.csv')
 dados2014 = pd.read_csv('2014.csv')
 dados2015 = pd.read_csv('2015.csv')
@@ -250,17 +250,10 @@ pp_dados2021.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
 
 #Gera um novo dataset a partir dos dados obtidos no pré-processamento
 #Exportar arquivo CSV a partir do novo dataset obtido
-diretorio = r'..\Pré-processamento\2015.csv'
-pp_dados2015.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2016.csv'
-pp_dados2016.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2017.csv'
-pp_dados2017.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2018.csv'
-pp_dados2018.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2019.csv'
-pp_dados2019.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2020.csv'
-pp_dados2020.to_csv(diretorio)
-diretorio = r'..\Pré-processamento\2021.csv'
-pp_dados2021.to_csv(diretorio)
+pp_dados2015.to_csv(r'..\Pré-processamento\2015.csv')
+pp_dados2016.to_csv(r'..\Pré-processamento\2016.csv')
+pp_dados2017.to_csv(r'..\Pré-processamento\2017.csv')
+pp_dados2018.to_csv(r'..\Pré-processamento\2018.csv')
+pp_dados2019.to_csv(r'..\Pré-processamento\2019.csv')
+pp_dados2020.to_csv(r'..\Pré-processamento\2020.csv')
+pp_dados2021.to_csv(r'..\Pré-processamento\2021.csv')
