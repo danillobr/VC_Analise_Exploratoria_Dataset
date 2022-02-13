@@ -14,10 +14,10 @@ dados2019 = pd.read_csv('2019.csv')
 dados2020 = pd.read_csv('2020.csv')
 dados2021 = pd.read_csv('2021.csv')
 
-#Lista dos dados por ano
+'''Lista dos dados por ano
 dataset = [
     dados2013,
-    dados2014,
+    dados2014, 
     dados2015,
     dados2016,
     dados2017,
@@ -31,7 +31,7 @@ dataset = [
 pd.concat(dataset, axis=0)
 
 #Removendo os dados referente a 2013 e 2014
-dataset = dataset[2:]
+dataset = dataset[2:]'''
 
 
 #Pegando as colunas que tem dados válidos para a nossa análise
@@ -239,13 +239,14 @@ pp_dados2021 = dados2021.loc[:,[
 ]]
 
 #Removendo as linhas com valores nulos nos atributos referentes aos sintomas
-pp_dados2015.dropna(subset = ['febre'], inplace=True) 
-pp_dados2016.dropna(subset = ['febre'], inplace=True)
-pp_dados2017.dropna(subset = ['febre'], inplace=True) 
-pp_dados2018.dropna(subset = ['febre'], inplace=True)
-pp_dados2019.dropna(subset = ['febre'], inplace=True) 
-pp_dados2020.dropna(subset = ['febre'], inplace=True)
-pp_dados2021.dropna(subset = ['febre'], inplace=True) 
+#Removendo as linhas com valor nulo na data de nascimento
+pp_dados2015.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
+pp_dados2016.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
+pp_dados2017.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
+pp_dados2018.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
+pp_dados2019.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
+pp_dados2020.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
+pp_dados2021.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
 
 #Gera um novo dataset a partir dos dados obtidos no pré-processamento
 #Exportar arquivo CSV a partir do novo dataset obtido
