@@ -15,5 +15,8 @@
 ## Acesso ao dataset
  * [Casos de dengue contabilizados nas unidades de saúde, públicas ou particulares, da cidade de Recipe - PE](http://dados.recife.pe.gov.br/it/dataset/casos-de-dengue-zika-e-chikungunya)
 
+## Documentação do projeto
+ * [descrição](https://github.com/danillobr/VC_Analise_Exploratoria_Dataset/tree/main/Documenta%C3%A7%C3%A3o)
+
 ## Apresentação do projeto
-* [YouTube](https:///)
+ * [YouTube](https:///)
