@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 #Acessando o diretório dos arquivos CSV e carregando eles nas variáveis
-os.chdir(r'C:\Users\Dan\Desktop\Visualização Computacional\Dataset')
+os.chdir(r'C:\Users\Dan\Desktop\Projeto\VC_Analise_Exploratoria_Dataset\Dataset')
 dados2013 = pd.read_csv('2013.csv')
 dados2014 = pd.read_csv('2014.csv')
 dados2015 = pd.read_csv('2015.csv')
