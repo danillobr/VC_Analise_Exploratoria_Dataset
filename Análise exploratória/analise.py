@@ -189,3 +189,21 @@ idadePacientes = pd.DataFrame()
 idadePacientes['Idades'] = dataset['ano'] - auxIdade[0].astype(int)
 idadePacientes.plot.hist(bins=10, alpha=0.5, title='Histograma')
 
+#Gera Gráfico sobre como a dengue afeta os sexos diferentes
+sexoFebreExantemaVomitoNause = dataset.loc[:,[
+    'tp_sexo',
+    'febre',
+    'exantema',
+    'vomito',
+    'nausea'
+]]
+sexoFebreExantemaVomitoNause['sexoFebreExantemaVomitoNause'] = (
+    sexoFebreExantemaVomitoNause['febre'] +
+    sexoFebreExantemaVomitoNause['exantema'] +
+    sexoFebreExantemaVomitoNause['vomito'] +
+    sexoFebreExantemaVomitoNause['nausea']
+) / 4
+
+sexoFebreExantemaVomitoNause.groupby('tp_sexo').hist(figsize=(10, 8))
+sexoFebreExantemaVomitoNause.groupby('tp_sexo').describe()
+sexoFebreExantemaVomitoNause.groupby('tp_sexo').mean()

@@ -240,13 +240,13 @@ pp_dados2021 = dados2021.loc[:,[
 
 #Removendo as linhas com valores nulos nos atributos referentes aos sintomas
 #Removendo as linhas com valor nulo na data de nascimento
-pp_dados2015.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
-pp_dados2016.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
-pp_dados2017.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
-pp_dados2018.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
-pp_dados2019.dropna(subset = ['febre', 'dt_nascimento'], inplace=True) 
-pp_dados2020.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
-pp_dados2021.dropna(subset = ['febre', 'dt_nascimento'], inplace=True)
+pp_dados2015.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True) 
+pp_dados2016.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True)
+pp_dados2017.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True) 
+pp_dados2018.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True)
+pp_dados2019.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True) 
+pp_dados2020.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True)
+pp_dados2021.dropna(subset = ['febre', 'dt_nascimento', 'tp_sexo'], inplace=True)
 
 #Gera um novo dataset a partir dos dados obtidos no pré-processamento
 #Exportar arquivo CSV a partir do novo dataset obtido
