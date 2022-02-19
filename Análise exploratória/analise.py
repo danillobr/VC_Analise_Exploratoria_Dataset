@@ -21,25 +21,6 @@ dados2019['ano'] = 2019
 dados2020['ano'] = 2020
 dados2021['ano'] = 2021
 
-#Criar um nome atributo mês para cada tabela
-mes = dados2015['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2015['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2016['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2016['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2017['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2017['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2018['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2018['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2019['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2019['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2020['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2020['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-mes = dados2021['dt_notificacao'].str.split('-', n = 2, expand = True)
-dados2021['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
-
-#Unir os dados/tabelas em um único dataset
-dataset = pd.concat([dados2015, dados2016, dados2017, dados2018, dados2019, dados2020, dados2021], axis=0)
-
 #Gera Gráfico casos confirmados por ano
 totalcasos2015 = len(dados2015.index) 
 totalcasos2016 = len(dados2016.index)
@@ -65,7 +46,7 @@ graficoQuantidadeCasosAno.groupby(['Ano']).sum().plot(
     y='Casos confirmados por Ano',
     autopct='%1.1f%%',
     figsize=(9, 8),
-    title='Gráfico modelo Pizza dos casos confirmados por ano'
+    title=''
 )
 
 quantObito2015 = dados2015['dt_obito'].count()
@@ -86,14 +67,16 @@ casos = [
     totalcasos2021]
 obitos = [quantObito2015, quantObito2016, quantObito2017, quantObito2018, quantObito2019, quantObito2020, quantObito2021]
 ano = ['2015', '2016', '2017', '2018', '2019', '2020', '2021']
-df = pd.DataFrame({
+graficoQuantidadeCasosObitoAno = pd.DataFrame({
     'casos': casos,
     'obitos': obitos},
     index=ano)
-ax = df.plot.barh(figsize=(50, 10))
+graficoQuantidadeCasosObitoAno.plot(kind='barh', figsize=(10, 3), title='')
+graficoQuantidadeCasosAno.plot(kind='barh', x='Ano', y='Casos confirmados por Ano', figsize=(10, 5), title='Gráfico de barras horizontal dos casos confirmados por ano')
 
-graficoQuantidadeCasosAno.plot(kind='barh', x='Ano', y='Casos confirmados por Ano', figsize=(30, 5), title='Gráfico de barras horizontal dos casos confirmados por ano')
-
+#Criar um nome atributo mês para cada tabela de 2016
+mes = dados2016['dt_notificacao'].str.split('-', n = 2, expand = True)
+dados2016['mes'] = pd.to_datetime(mes[1], format='%m').dt.month_name().str.slice(stop=3)
 
 #Gera Gráfico casos confirmados por mês do ano que mais apresentou casos
 quantidadeCasosMes = dados2016.loc[:,[
@@ -134,8 +117,11 @@ graficoQuantidadeCasosMes.groupby(['Mês']).sum().plot(
     y='Casos confirmados em 2016',
     autopct='%1.1f%%',
     figsize=(12, 12),
-    title='Gráfico modelo Pizza do ano 2016'
+    title=''
 )
+
+#Unir os dados/tabelas em um único dataset
+dataset = pd.concat([dados2015, dados2016, dados2017, dados2018, dados2019, dados2020, dados2021], axis=0)
 
 #Gera Gráfico casos confirmados por bairro
 quantidadeCasosBairro = dataset.loc[:,[
@@ -146,9 +132,9 @@ quantidadeCasosBairro = quantidadeCasosBairro.rename(columns={'no_bairro_residen
 quantidadeCasosBairro = quantidadeCasosBairro.sort_values(by=['total'])
 quantidadeCasosBairro = quantidadeCasosBairro.tail(10)
                
-quantidadeCasosBairro = quantidadeCasosBairro.sort_values(by=['bairro'])
+#quantidadeCasosBairro = quantidadeCasosBairro.sort_values(by=['bairro'])
 #quantidadeCasosBairro.plot.barh(x='bairro', y='total')
-quantidadeCasosBairro.plot(kind='barh', x='bairro', y='total', figsize=(10, 5), title='Gráfico de barras horizontal dos bairros mais afetados')
+quantidadeCasosBairro.plot(kind='barh', x='bairro', y='total', figsize=(10, 5), title='')
 
 #Gera Gráfico evolução dos casos
 evolucao = dataset.loc[:,[
@@ -170,24 +156,23 @@ graficoEvolucao = pd.DataFrame({
     'Total':[
         quantObito,
         quantEncerramento,
-        quantInconclusivo,
-]})
-
-graficoEvolucao.plot(kind='barh', x='Estado', y='Total', figsize=(20, 5), title='Gráfico de barras horizontal do estado dos pacientes')
-
+        quantInconclusivo]
+})
 graficoEvolucao.groupby(['Estado']).sum().plot(
     kind='pie',
     y='Total',
     autopct='%1.1f%%',
-    figsize=(9, 8),
-    title='Gráfico modelo Pizza do estado dos pacientes'
+    figsize=(7, 7),
+    title=''
 )
+graficoEvolucao.plot(kind='barh', x='Estado', y='Total', figsize=(12, 5), title='')
 
 #Gera Histograma pela idade
 auxIdade = dataset['dt_nascimento'].str.split('-', n = 1, expand = True)
 idadePacientes = pd.DataFrame()
 idadePacientes['Idades'] = dataset['ano'] - auxIdade[0].astype(int)
-idadePacientes.plot.hist(bins=10, alpha=0.5, title='Histograma')
+idadePacientes.plot.hist(bins=10, alpha=0.5, title='')
+idadePacientes.hist()
 
 #Gera Gráfico sobre como a dengue afeta os sexos diferentes
 sexoFebreExantemaVomitoNause = dataset.loc[:,[
@@ -197,13 +182,14 @@ sexoFebreExantemaVomitoNause = dataset.loc[:,[
     'vomito',
     'nausea'
 ]]
-sexoFebreExantemaVomitoNause['sexoFebreExantemaVomitoNause'] = (
+sexoFebreExantemaVomitoNause['media dos sintomas'] = (
     sexoFebreExantemaVomitoNause['febre'] +
     sexoFebreExantemaVomitoNause['exantema'] +
     sexoFebreExantemaVomitoNause['vomito'] +
     sexoFebreExantemaVomitoNause['nausea']
 ) / 4
 
-sexoFebreExantemaVomitoNause.groupby('tp_sexo').hist(figsize=(10, 8))
+sexoFebreExantemaVomitoNause.groupby('tp_sexo').hist(figsize=(9, 9))
+sexoFebreExantemaVomitoNause.groupby('tp_sexo').count()
 sexoFebreExantemaVomitoNause.groupby('tp_sexo').describe()
 sexoFebreExantemaVomitoNause.groupby('tp_sexo').mean()
