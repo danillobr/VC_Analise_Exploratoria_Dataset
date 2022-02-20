@@ -4,7 +4,7 @@ import os
 
 #Acessando o diretório dos arquivos CSV e carregando eles nas variáveis
 os.chdir(r'C:\Users\Dan\Desktop\Projeto\VC_Analise_Exploratoria_Dataset\Pré-processamento')
-dados2015 = pd.read_csv('2015.csv', delimiter=None, header='infer', index_col=None, usecols=None, squeeze=None, mangle_dupe_cols=True, dtype=None, engine=None, converters=None, true_values=None, false_values=None, skipinitialspace=False, skiprows=None, skipfooter=0, nrows=None, na_values=None, keep_default_na=True, na_filter=True, verbose=False, skip_blank_lines=True, parse_dates=None, infer_datetime_format=False, keep_date_col=False, date_parser=None, dayfirst=False, cache_dates=True, iterator=False, chunksize=None, compression='infer', thousands=None, decimal='.', lineterminator=None, quotechar='"', quoting=0, doublequote=True, escapechar=None, comment=None, encoding=None, encoding_errors='strict', dialect=None, error_bad_lines=None, warn_bad_lines=None, on_bad_lines=None, delim_whitespace=False, low_memory=True, memory_map=False, float_precision=None, storage_options=None)
+dados2015 = pd.read_csv('2015.csv')
 dados2016 = pd.read_csv('2016.csv')
 dados2017 = pd.read_csv('2017.csv')
 dados2018 = pd.read_csv('2018.csv')
@@ -71,7 +71,7 @@ graficoQuantidadeCasosObitoAno = pd.DataFrame({
     'casos': casos,
     'obitos': obitos},
     index=ano)
-graficoQuantidadeCasosObitoAno.plot(kind='barh', figsize=(10, 3), title='')
+graficoQuantidadeCasosObitoAno.plot(kind='barh', figsize=(50, 3), title='')
 graficoQuantidadeCasosAno.plot(kind='barh', x='Ano', y='Casos confirmados por Ano', figsize=(10, 5), title='Gráfico de barras horizontal dos casos confirmados por ano')
 
 #Criar um nome atributo mês para cada tabela de 2016
@@ -107,10 +107,10 @@ graficoQuantidadeCasosMes = pd.DataFrame({
         int(jun),
         int(jul),
         int(ago),
-        int(sete),
+        int(sete), 
         int(out),
         int(nov),
-        int(dez),
+        int(dez)
 ]})
 graficoQuantidadeCasosMes.groupby(['Mês']).sum().plot(
     kind='pie',
@@ -122,6 +122,9 @@ graficoQuantidadeCasosMes.groupby(['Mês']).sum().plot(
 
 #Unir os dados/tabelas em um único dataset
 dataset = pd.concat([dados2015, dados2016, dados2017, dados2018, dados2019, dados2020, dados2021], axis=0)
+
+#Ver o total de óbito de todos os anos
+dataset['dt_obito'].count()
 
 #Gera Gráfico casos confirmados por bairro
 quantidadeCasosBairro = dataset.loc[:,[
@@ -172,7 +175,7 @@ auxIdade = dataset['dt_nascimento'].str.split('-', n = 1, expand = True)
 idadePacientes = pd.DataFrame()
 idadePacientes['Idades'] = dataset['ano'] - auxIdade[0].astype(int)
 idadePacientes.plot.hist(bins=10, alpha=0.5, title='')
-idadePacientes.hist()
+idadePacientes.hist(figsize=(12, 8))
 
 #Gera Gráfico sobre como a dengue afeta os sexos diferentes
 sexoFebreExantemaVomitoNause = dataset.loc[:,[
