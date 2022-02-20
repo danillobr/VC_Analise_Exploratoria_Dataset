@@ -19,4 +19,4 @@
  * [descrição](https://github.com/danillobr/VC_Analise_Exploratoria_Dataset/tree/main/Documenta%C3%A7%C3%A3o)
 
 ## Apresentação do projeto
- * [YouTube](https:///)
+ * [YouTube](https://youtu.be/eyZ9lxamYXI)
